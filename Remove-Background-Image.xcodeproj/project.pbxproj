@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		E91047BE2B1E6863007439B7 /* Remove_Background_ImageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047BD2B1E6863007439B7 /* Remove_Background_ImageApp.swift */; };
-		E91047C02B1E6863007439B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047BF2B1E6863007439B7 /* ContentView.swift */; };
+		E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047BF2B1E6863007439B7 /* RemoveBackgroundView.swift */; };
 		E91047C22B1E6865007439B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91047C12B1E6865007439B7 /* Assets.xcassets */; };
 		E91047C52B1E6865007439B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91047C42B1E6865007439B7 /* Preview Assets.xcassets */; };
+		E91047CC2B20F866007439B7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CB2B20F866007439B7 /* ImagePicker.swift */; };
+		E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E91047BA2B1E6863007439B7 /* Remove-Background-Image.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remove-Background-Image.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91047BD2B1E6863007439B7 /* Remove_Background_ImageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remove_Background_ImageApp.swift; sourceTree = "<group>"; };
-		E91047BF2B1E6863007439B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E91047BF2B1E6863007439B7 /* RemoveBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundView.swift; sourceTree = "<group>"; };
 		E91047C12B1E6865007439B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E91047C42B1E6865007439B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E91047CB2B20F866007439B7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +55,11 @@
 		E91047BC2B1E6863007439B7 /* Remove-Background-Image */ = {
 			isa = PBXGroup;
 			children = (
+				E91047CD2B20F9BC007439B7 /* RemoveBackgroundView */,
 				E91047BD2B1E6863007439B7 /* Remove_Background_ImageApp.swift */,
-				E91047BF2B1E6863007439B7 /* ContentView.swift */,
 				E91047C12B1E6865007439B7 /* Assets.xcassets */,
 				E91047C32B1E6865007439B7 /* Preview Content */,
+				E91047CB2B20F866007439B7 /* ImagePicker.swift */,
 			);
 			path = "Remove-Background-Image";
 			sourceTree = "<group>";
@@ -65,6 +70,15 @@
 				E91047C42B1E6865007439B7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E91047CD2B20F9BC007439B7 /* RemoveBackgroundView */ = {
+			isa = PBXGroup;
+			children = (
+				E91047BF2B1E6863007439B7 /* RemoveBackgroundView.swift */,
+				E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */,
+			);
+			path = RemoveBackgroundView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E91047C02B1E6863007439B7 /* ContentView.swift in Sources */,
+				E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */,
+				E91047CC2B20F866007439B7 /* ImagePicker.swift in Sources */,
+				E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */,
 				E91047BE2B1E6863007439B7 /* Remove_Background_ImageApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

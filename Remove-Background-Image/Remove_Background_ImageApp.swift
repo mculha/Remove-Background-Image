@@ -11,7 +11,7 @@ import SwiftUI
 struct Remove_Background_ImageApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RemoveBackgroundView()
         }
     }
 }
