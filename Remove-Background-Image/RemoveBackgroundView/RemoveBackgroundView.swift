@@ -20,8 +20,8 @@ struct RemoveBackgroundView: View {
                 }
         }
         .padding()
-        .sheet(isPresented: $viewModel.presentImagePicker) {
-            ImagePicker(image: $viewModel.image)
+        .fullScreenCover(isPresented: $viewModel.presentImagePicker) {
+            ImagePickerCamera(image: $viewModel.image)
         }
     }
 }

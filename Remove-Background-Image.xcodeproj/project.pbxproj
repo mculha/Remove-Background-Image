@@ -11,8 +11,9 @@
 		E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047BF2B1E6863007439B7 /* RemoveBackgroundView.swift */; };
 		E91047C22B1E6865007439B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91047C12B1E6865007439B7 /* Assets.xcassets */; };
 		E91047C52B1E6865007439B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E91047C42B1E6865007439B7 /* Preview Assets.xcassets */; };
-		E91047CC2B20F866007439B7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CB2B20F866007439B7 /* ImagePicker.swift */; };
+		E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CB2B20F866007439B7 /* ImagePickerGallery.swift */; };
 		E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */; };
+		E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D12B22455E007439B7 /* ImagePickerCamera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +22,9 @@
 		E91047BF2B1E6863007439B7 /* RemoveBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundView.swift; sourceTree = "<group>"; };
 		E91047C12B1E6865007439B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E91047C42B1E6865007439B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E91047CB2B20F866007439B7 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E91047CB2B20F866007439B7 /* ImagePickerGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerGallery.swift; sourceTree = "<group>"; };
 		E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundViewModel.swift; sourceTree = "<group>"; };
+		E91047D12B22455E007439B7 /* ImagePickerCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCamera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +57,11 @@
 		E91047BC2B1E6863007439B7 /* Remove-Background-Image */ = {
 			isa = PBXGroup;
 			children = (
+				E91047D02B2243DF007439B7 /* Representable */,
 				E91047CD2B20F9BC007439B7 /* RemoveBackgroundView */,
 				E91047BD2B1E6863007439B7 /* Remove_Background_ImageApp.swift */,
 				E91047C12B1E6865007439B7 /* Assets.xcassets */,
 				E91047C32B1E6865007439B7 /* Preview Content */,
-				E91047CB2B20F866007439B7 /* ImagePicker.swift */,
 			);
 			path = "Remove-Background-Image";
 			sourceTree = "<group>";
@@ -79,6 +81,15 @@
 				E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */,
 			);
 			path = RemoveBackgroundView;
+			sourceTree = "<group>";
+		};
+		E91047D02B2243DF007439B7 /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+				E91047CB2B20F866007439B7 /* ImagePickerGallery.swift */,
+				E91047D12B22455E007439B7 /* ImagePickerCamera.swift */,
+			);
+			path = Representable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +163,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */,
-				E91047CC2B20F866007439B7 /* ImagePicker.swift in Sources */,
+				E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */,
+				E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */,
 				E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */,
 				E91047BE2B1E6863007439B7 /* Remove_Background_ImageApp.swift in Sources */,
 			);
@@ -291,6 +303,7 @@
 				DEVELOPMENT_TEAM = 8F8TZUV25Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app would like to use your camera to pick an image whose background will be removed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +333,7 @@
 				DEVELOPMENT_TEAM = 8F8TZUV25Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app would like to use your camera to pick an image whose background will be removed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
