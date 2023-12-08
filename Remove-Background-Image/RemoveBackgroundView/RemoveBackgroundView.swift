@@ -22,6 +22,7 @@ struct RemoveBackgroundView: View {
         .padding()
         .fullScreenCover(isPresented: $viewModel.presentImagePicker) {
             ImagePickerCamera(image: $viewModel.image)
+                .background(.black)
         }
     }
 }

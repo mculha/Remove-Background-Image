@@ -18,6 +18,7 @@ struct ImagePickerCamera: UIViewControllerRepresentable {
         imagePicker.sourceType = .camera
         imagePicker.delegate = context.coordinator
         imagePicker.allowsEditing = false
+        imagePicker.modalPresentationStyle = .fullScreen
         return imagePicker
     }
     
