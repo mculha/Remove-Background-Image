@@ -10,5 +10,6 @@ import SwiftUI
 
 @Observable final class RemoveBackgroundViewModel {
     var image: UIImage?
-    var presentImagePicker: Bool = false
+    var presentGallery: Bool = false
+    var presentCamera: Bool = false
 }

@@ -12,18 +12,62 @@ struct RemoveBackgroundView: View {
     @State private var viewModel: RemoveBackgroundViewModel = .init()
     
     var body: some View {
-        VStack {
-            Text("Tap and choose an Image")
-                .font(.system(size: 20, weight: .bold))
-                .onTapGesture {
-                    self.viewModel.presentImagePicker = true
+        VStack(spacing: 30) {
+            
+            VStack {
+                if let image = viewModel.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .padding(10)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .aspectRatio(contentMode: .fit)
+                        
+                } else {
+                    ZStack(alignment: .center) {
+                        Color.gray
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                        Image(systemName: "photo.badge.plus")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.white)
+                            .padding(70)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
                 }
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 50)
+            
+            Spacer()
+            
+            Button(action: self.presentBottomSheet) {
+                
+                Text("Upload a Photo")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(.white)
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 25)
+                    .background(Color.black)
+                    .clipShape(Capsule())
+                    .padding(.bottom, 30)
+            }
+            
         }
-        .padding()
-        .fullScreenCover(isPresented: $viewModel.presentImagePicker) {
+        .sheet(isPresented: $viewModel.presentGallery) {
+            ImagePickerGallery(image: $viewModel.image)
+        }
+        .fullScreenCover(isPresented: $viewModel.presentCamera) {
             ImagePickerCamera(image: $viewModel.image)
                 .background(.black)
         }
+    }
+    
+    func presentBottomSheet() {
+        //TODO - Build Here
+        self.viewModel.presentGallery = true
     }
 }
 
