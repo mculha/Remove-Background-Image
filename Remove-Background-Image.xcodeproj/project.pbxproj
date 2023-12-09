@@ -14,6 +14,7 @@
 		E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CB2B20F866007439B7 /* ImagePickerGallery.swift */; };
 		E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */; };
 		E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D12B22455E007439B7 /* ImagePickerCamera.swift */; };
+		E91047D52B24886A007439B7 /* PhotoPickerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E91047CB2B20F866007439B7 /* ImagePickerGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerGallery.swift; sourceTree = "<group>"; };
 		E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundViewModel.swift; sourceTree = "<group>"; };
 		E91047D12B22455E007439B7 /* ImagePickerCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCamera.swift; sourceTree = "<group>"; };
+		E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		E91047BC2B1E6863007439B7 /* Remove-Background-Image */ = {
 			isa = PBXGroup;
 			children = (
+				E91047D32B248855007439B7 /* PhotoSelection */,
 				E91047D02B2243DF007439B7 /* Representable */,
 				E91047CD2B20F9BC007439B7 /* RemoveBackgroundView */,
 				E91047BD2B1E6863007439B7 /* Remove_Background_ImageApp.swift */,
@@ -90,6 +93,14 @@
 				E91047D12B22455E007439B7 /* ImagePickerCamera.swift */,
 			);
 			path = Representable;
+			sourceTree = "<group>";
+		};
+		E91047D32B248855007439B7 /* PhotoSelection */ = {
+			isa = PBXGroup;
+			children = (
+				E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */,
+			);
+			path = PhotoSelection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 				E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */,
 				E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */,
 				E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */,
+				E91047D52B24886A007439B7 /* PhotoPickerSelectionView.swift in Sources */,
 				E91047BE2B1E6863007439B7 /* Remove_Background_ImageApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -44,7 +44,6 @@ struct RemoveBackgroundView: View {
             Spacer()
             
             Button(action: self.presentBottomSheet) {
-                
                 Text("Upload a Photo")
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.white)
@@ -56,18 +55,24 @@ struct RemoveBackgroundView: View {
             }
             
         }
-        .sheet(isPresented: $viewModel.presentGallery) {
-            ImagePickerGallery(image: $viewModel.image)
+        .sheet(isPresented: $viewModel.presentSelection) {
+            PhotoPickerSelectionView(imageSource: $viewModel.source, present: $viewModel.presentSelection)
+                .presentationDetents([.height(90)])
         }
-        .fullScreenCover(isPresented: $viewModel.presentCamera) {
-            ImagePickerCamera(image: $viewModel.image)
-                .background(.black)
+        .fullScreenCover(item: $viewModel.source) { source in
+            switch source {
+            case .camera:
+                ImagePickerCamera(image: $viewModel.image)
+                    .background(.black)
+            case .gallery:
+                ImagePickerGallery(image: $viewModel.image)
+                                .background(.white)
+            }
         }
     }
     
     func presentBottomSheet() {
-        //TODO - Build Here
-        self.viewModel.presentGallery = true
+        self.viewModel.presentSelection = true
     }
 }
 
