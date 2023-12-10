@@ -28,12 +28,7 @@ enum Background: String, Equatable, CaseIterable {
 }
 
 @Observable final class RemoveBackgroundViewModel {
-    var image: UIImage? {
-        didSet {
-            guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .transparent, subjectPosition: nil)
-        }
-    }
+    var image: UIImage?
     var source: ImageSourceType?
     var presentSelection: Bool = false
     var output: UIImage?
@@ -41,8 +36,13 @@ enum Background: String, Equatable, CaseIterable {
     @ObservationIgnored
     private var processingQueue = DispatchQueue(label: "EffectsProcessing")
     
+    func removeBackground() {
+        guard let image else { return }
+        self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .transparent, subjectPosition: nil)
+    }
+    
     // Refresh the pipeline and generate a new output.
-    func regenerate(
+    private func regenerate(
         usingInputImage inputImage: CIImage,
         effect: Effect,
         background: Background,

@@ -49,16 +49,30 @@ struct RemoveBackgroundView: View {
             
             Spacer()
             
-            Button(action: self.presentBottomSheet) {
-                Text("Upload a Photo")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundStyle(.white)
-                    .padding(.vertical, 15)
-                    .padding(.horizontal, 25)
-                    .background(Color.black)
-                    .clipShape(Capsule())
-                    .padding(.bottom, 30)
+            VStack {
+                Button(action: self.removeBackground) {
+                    Text("Remove Background")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.white)
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 25)
+                        .background(viewModel.image == nil ? Color.gray : Color.black)
+                        .clipShape(Capsule())
+                }
+                .disabled(viewModel.image == nil)
+                
+                Button(action: self.presentBottomSheet) {
+                    Text("Upload a Photo")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.white)
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 25)
+                        .background(Color.black)
+                        .clipShape(Capsule())
+                        
+                }
             }
+            .padding(.bottom, 30)
             
         }
         .sheet(isPresented: $viewModel.presentSelection) {
@@ -79,6 +93,10 @@ struct RemoveBackgroundView: View {
     
     func presentBottomSheet() {
         self.viewModel.presentSelection = true
+    }
+    
+    func removeBackground() {
+        viewModel.removeBackground()
     }
 }
 
