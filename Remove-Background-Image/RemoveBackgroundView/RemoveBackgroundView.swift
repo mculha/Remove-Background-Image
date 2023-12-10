@@ -15,14 +15,20 @@ struct RemoveBackgroundView: View {
         VStack(spacing: 30) {
             
             VStack {
-                if let image = viewModel.image {
+                if let output = viewModel.output {
+                    Image(uiImage: output)
+                        .resizable()
+                        .padding(10)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .aspectRatio(contentMode: .fit)
+                } else if let image = viewModel.image {
                     Image(uiImage: image)
                         .resizable()
                         .padding(10)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .aspectRatio(contentMode: .fit)
-                        
                 } else {
                     ZStack(alignment: .center) {
                         Color.gray
