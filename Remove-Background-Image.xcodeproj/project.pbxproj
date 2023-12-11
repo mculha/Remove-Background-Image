@@ -59,6 +59,8 @@
 		E91047BC2B1E6863007439B7 /* Remove-Background-Image */ = {
 			isa = PBXGroup;
 			children = (
+				E9C10EAB2B26CC0E008876EB /* Utility */,
+				E9C10EAA2B26CC02008876EB /* Model */,
 				E91047D32B248855007439B7 /* PhotoSelection */,
 				E91047D02B2243DF007439B7 /* Representable */,
 				E91047CD2B20F9BC007439B7 /* RemoveBackgroundView */,
@@ -101,6 +103,20 @@
 				E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */,
 			);
 			path = PhotoSelection;
+			sourceTree = "<group>";
+		};
+		E9C10EAA2B26CC02008876EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9C10EAB2B26CC0E008876EB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

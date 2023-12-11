@@ -11,43 +11,24 @@ import Combine
 import Vision
 import CoreImage.CIFilterBuiltins
 
-/// Presets for the subjects' visual effects.
-enum Effect: String, Equatable, CaseIterable {
-    case none = "None"
-    case highlight = "Highlight"
-    case bokeh = "Bokeh Halo"
-    case noir = "Noir"
-}
-
-/// Presets for the background's visual effects.
-enum Background: String, Equatable, CaseIterable {
-    case original = "Original"
-    case transparent = "Transparent"
-    case sunset = "Sunset"
-    case greenScreen = "Green Screen"
-}
-
 @Observable final class RemoveBackgroundViewModel {
-    var image: UIImage?
+    var image: UIImage? { didSet { output = nil } }
     var source: ImageSourceType?
     var presentSelection: Bool = false
     var output: UIImage?
+    
+    @ObservationIgnored
+    var subjectPosition: CGPoint?
     
     @ObservationIgnored
     private var processingQueue = DispatchQueue(label: "EffectsProcessing")
     
     func removeBackground() {
         guard let image else { return }
-        self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .transparent, subjectPosition: nil)
+        self.regenerate(usingInputImage: CIImage(image: image)!, subjectPosition: subjectPosition)
     }
     
-    // Refresh the pipeline and generate a new output.
-    private func regenerate(
-        usingInputImage inputImage: CIImage,
-        effect: Effect,
-        background: Background,
-        subjectPosition: CGPoint?
-    ) {
+    private func regenerate(usingInputImage inputImage: CIImage, subjectPosition: CGPoint?) {
         processingQueue.async {
             // Generate the input-image mask.
             guard let mask = self.subjectMask(fromImage: inputImage, atPoint: subjectPosition) else {
@@ -55,16 +36,11 @@ enum Background: String, Equatable, CaseIterable {
             }
             
             // Acquire the selected background image.
-            let backgroundImage = self.image(forBackground: background, inputImage: inputImage)
+            let backgroundImage = CIImage(color: CIColor.clear)
                 .cropped(to: inputImage.extent)
             
             // Apply the visual effect and composite.
-            let composited = self.apply(
-                effect: effect,
-                toInputImage: inputImage,
-                background: backgroundImage,
-                mask: mask)
-            
+            let composited = self.apply(toInputImage: inputImage, background: backgroundImage, mask: mask)
             let output = UIImage(cgImage: self.render(ciImage: composited))
             
             DispatchQueue.main.async {
@@ -111,77 +87,13 @@ enum Background: String, Equatable, CaseIterable {
     }
     
     /// Applies the current effect and returns the composited image.
-    private func apply(
-        effect: Effect,
-        toInputImage inputImage: CIImage,
-        background: CIImage,
-        mask: CIImage
-    ) -> CIImage {
-        
-        var postEffectBackground = background
-        
-        switch effect {
-        case .none:
-            break
-            
-        case .highlight:
-            let filter = CIFilter.exposureAdjust()
-            filter.inputImage = background
-            filter.ev = -3
-            postEffectBackground = filter.outputImage!
-            
-        case .bokeh:
-            let filter = CIFilter.bokehBlur()
-            filter.inputImage = apply(
-                effect: .none,
-                toInputImage: CIImage(color: .white)
-                    .cropped(to: inputImage.extent),
-                background: background,
-                mask: mask)
-            filter.ringSize = 1
-            filter.ringAmount = 1
-            filter.softness = 1.0
-            filter.radius = 20
-            postEffectBackground = filter.outputImage!
-            
-        case .noir:
-            let filter = CIFilter.photoEffectNoir()
-            filter.inputImage = background
-            postEffectBackground = filter.outputImage!
-        }
-        
+    private func apply(toInputImage inputImage: CIImage, background: CIImage, mask: CIImage) -> CIImage {
         let filter = CIFilter.blendWithMask()
         filter.inputImage = inputImage
-        filter.backgroundImage = postEffectBackground
+        filter.backgroundImage = background
         filter.maskImage = mask
         return filter.outputImage!
     }
-    
-    
-    /// Returns the image for the given background preset.
-    private func image(forBackground background: Background, inputImage: CIImage) -> CIImage {
-        switch background {
-        case .original:
-            return inputImage
-        case .transparent:
-            return CIImage(color: CIColor.clear)
-        case .greenScreen:
-            return CIImage(color: CIColor.green)
-        case .sunset:
-            // Load the background image
-            var bgImage = loadImage(named: "sunset")
-            
-            // Upsample the background image if the input image is larger.
-            let scale = max(inputImage.extent.width / bgImage.extent.width,
-                            inputImage.extent.height / bgImage.extent.height)
-            if scale > 1.0 {
-                bgImage = bgImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-            }
-            
-            return bgImage
-        }
-    }
-    
     
     /// Renders a CIImage onto a CGImage.
     private func render(ciImage img: CIImage) -> CGImage {
@@ -195,10 +107,7 @@ enum Background: String, Equatable, CaseIterable {
     ///
     /// - parameter atPoint: A point with a top-left origin, normalized within the range [0, 1].
     /// - parameter inObservation: The observation instance to extract subject indices from.
-    private func instances(
-        atPoint maybePoint: CGPoint?,
-        inObservation observation: VNInstanceMaskObservation
-    ) -> IndexSet {
+    private func instances(atPoint maybePoint: CGPoint?, inObservation observation: VNInstanceMaskObservation) -> IndexSet {
         guard let point = maybePoint else {
             return observation.allInstances
         }
@@ -224,12 +133,6 @@ enum Background: String, Equatable, CaseIterable {
         // If the point lies on the background, select all instances.
         // Otherwise, restrict this to just the selected instance.
         return instanceLabel == 0 ? observation.allInstances : [Int(instanceLabel)]
-    }
-    
-    /// Loads a bundled image asset by name.
-    private func loadImage(named: String, withExtension ext: String = "jpg") -> CIImage {
-        guard let image = UIImage(named: "sunset")?.ciImage else { fatalError("Sample image asset \(named) not found.") }
-        return image
     }
 }
 
