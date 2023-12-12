@@ -23,12 +23,19 @@ struct RemoveBackgroundView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .aspectRatio(contentMode: .fit)
                 } else if let image = viewModel.image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .padding(10)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .aspectRatio(contentMode: .fit)
+                    GeometryReader { geometry in
+                        Image(uiImage: image)
+                            .resizable()
+                            .padding(10)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .aspectRatio(contentMode: .fit)
+                            .onTapGesture { location in
+                                self.viewModel.subjectPosition = CGPoint(
+                                    x: location.x / geometry.size.width,
+                                    y: location.y / geometry.size.height)
+                            }
+                    }
                 } else {
                     ZStack(alignment: .center) {
                         Color.gray

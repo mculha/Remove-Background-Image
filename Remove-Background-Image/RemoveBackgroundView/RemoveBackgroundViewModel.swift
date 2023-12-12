@@ -12,7 +12,12 @@ import Vision
 import CoreImage.CIFilterBuiltins
 
 @Observable final class RemoveBackgroundViewModel {
-    var image: UIImage? { didSet { output = nil } }
+    var image: UIImage? { 
+        didSet { 
+            subjectPosition = nil
+            output = nil
+        }
+    }
     var source: ImageSourceType?
     var presentSelection: Bool = false
     var output: UIImage?
