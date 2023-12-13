@@ -13,12 +13,12 @@ struct PhotoPickerSelectionView: View {
     @Binding var present: Bool
     
     var body: some View {
-        VStack {
+        HStack {
             Button {
                 self.present = false
                 self.imageSource = .gallery
             } label: {
-                HStack(spacing: 5) {
+                VStack(spacing: 5) {
                     Image(systemName: "photo.stack")
                         .foregroundStyle(.black)
                     
@@ -36,7 +36,7 @@ struct PhotoPickerSelectionView: View {
                 self.present = false
                 self.imageSource = .camera
             } label: {
-                HStack(spacing: 5) {
+                VStack(spacing: 5) {
                     Image(systemName: "camera.on.rectangle")
                         .foregroundStyle(.black)
                     
