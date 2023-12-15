@@ -13,8 +13,7 @@ import CoreImage.CIFilterBuiltins
 
 @Observable final class RemoveBackgroundViewModel {
     var image: UIImage? { 
-        didSet { 
-            subjectPosition = nil
+        didSet {
             output = nil
         }
     }
@@ -22,6 +21,7 @@ import CoreImage.CIFilterBuiltins
     var presentSelection: Bool = false
     var output: UIImage?
     
+    //TODO Integrate Later!
     @ObservationIgnored
     var subjectPosition: CGPoint?
     

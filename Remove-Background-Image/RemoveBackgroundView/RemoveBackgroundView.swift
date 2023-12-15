@@ -17,25 +17,10 @@ struct RemoveBackgroundView: View {
             VStack {
                 if let output = viewModel.output {
                     Image(uiImage: output)
-                        .resizable()
-                        .padding(10)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .aspectRatio(contentMode: .fit)
+                        .defaultImageModifier()
                 } else if let image = viewModel.image {
-                    GeometryReader { geometry in
-                        Image(uiImage: image)
-                            .resizable()
-                            .padding(10)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .aspectRatio(contentMode: .fit)
-                            .onTapGesture { location in
-                                self.viewModel.subjectPosition = CGPoint(
-                                    x: location.x / geometry.size.width,
-                                    y: location.y / geometry.size.height)
-                            }
-                    }
+                    Image(uiImage: image)
+                        .defaultImageModifier()
                 } else {
                     ZStack(alignment: .center) {
                         Color.gray
@@ -59,24 +44,13 @@ struct RemoveBackgroundView: View {
             VStack {
                 Button(action: self.removeBackground) {
                     Text("Remove Background")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.white)
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 25)
-                        .background(viewModel.image == nil ? Color.gray : Color.black)
-                        .clipShape(Capsule())
+                        .actionButtonModifier(backgroundColor: viewModel.image == nil ? Color.gray : Color.black)
                 }
                 .disabled(viewModel.image == nil)
                 
                 Button(action: self.presentBottomSheet) {
                     Text("Upload a Photo")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.white)
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 25)
-                        .background(Color.black)
-                        .clipShape(Capsule())
-                        
+                        .actionButtonModifier(backgroundColor: Color.black)
                 }
             }
             .padding(.bottom, 30)

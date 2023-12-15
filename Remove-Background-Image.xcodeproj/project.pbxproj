@@ -15,6 +15,8 @@
 		E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */; };
 		E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D12B22455E007439B7 /* ImagePickerCamera.swift */; };
 		E91047D52B24886A007439B7 /* PhotoPickerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */; };
+		E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979322B2CE771007A13E0 /* Modifier+Text.swift */; };
+		E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979342B2CE887007A13E0 /* Modifier+Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundViewModel.swift; sourceTree = "<group>"; };
 		E91047D12B22455E007439B7 /* ImagePickerCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCamera.swift; sourceTree = "<group>"; };
 		E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerSelectionView.swift; sourceTree = "<group>"; };
+		E93979322B2CE771007A13E0 /* Modifier+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Text.swift"; sourceTree = "<group>"; };
+		E93979342B2CE887007A13E0 /* Modifier+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Image.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,15 @@
 			path = PhotoSelection;
 			sourceTree = "<group>";
 		};
+		E93979312B2CE755007A13E0 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				E93979322B2CE771007A13E0 /* Modifier+Text.swift */,
+				E93979342B2CE887007A13E0 /* Modifier+Image.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		E9C10EAA2B26CC02008876EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +128,7 @@
 		E9C10EAB2B26CC0E008876EB /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E93979312B2CE755007A13E0 /* Modifier */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -191,7 +205,9 @@
 			files = (
 				E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */,
 				E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */,
+				E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */,
 				E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */,
+				E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */,
 				E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */,
 				E91047D52B24886A007439B7 /* PhotoPickerSelectionView.swift in Sources */,
 				E91047BE2B1E6863007439B7 /* Remove_Background_ImageApp.swift in Sources */,
