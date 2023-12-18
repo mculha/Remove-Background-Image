@@ -14,46 +14,11 @@ struct RemoveBackgroundView: View {
     var body: some View {
         VStack(spacing: 30) {
             
-            VStack {
-                if let output = viewModel.output {
-                    Image(uiImage: output)
-                        .defaultImageModifier()
-                } else if let image = viewModel.image {
-                    Image(uiImage: image)
-                        .defaultImageModifier()
-                } else {
-                    ZStack(alignment: .center) {
-                        Color.gray
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
-                        Image(systemName: "photo.badge.plus")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(.white)
-                            .padding(70)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal, 20)
-                }
-            }
-            .padding(.horizontal, 20)
-            .padding(.top, 50)
+            ImagesView(output: viewModel.output, image: viewModel.image)
             
             Spacer()
             
-            VStack {
-                Button(action: self.removeBackground) {
-                    Text("Remove Background")
-                        .actionButtonModifier(backgroundColor: viewModel.image == nil ? Color.gray : Color.black)
-                }
-                .disabled(viewModel.image == nil)
-                
-                Button(action: self.presentBottomSheet) {
-                    Text("Upload a Photo")
-                        .actionButtonModifier(backgroundColor: Color.black)
-                }
-            }
-            .padding(.bottom, 30)
+            ButtonsView(image: viewModel.image, removeButtonAction: self.removeBackground, uploadPhotoAction: self.presentBottomSheet)
             
         }
         .sheet(isPresented: $viewModel.presentSelection) {
@@ -83,4 +48,64 @@ struct RemoveBackgroundView: View {
 
 #Preview {
     RemoveBackgroundView()
+}
+
+struct AddImageView: View {
+    var body: some View {
+        ZStack(alignment: .center) {
+            Color.gray
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            Image(systemName: "photo.badge.plus")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.white)
+                .padding(70)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 20)
+    }
+}
+
+struct ImagesView: View {
+    let output: UIImage?
+    let image: UIImage?
+    
+    var body: some View {
+        VStack {
+            if let output {
+                Image(uiImage: output)
+                    .defaultImageModifier()
+            } else if let image {
+                Image(uiImage: image)
+                    .defaultImageModifier()
+            } else {
+                AddImageView()
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 50)
+    }
+}
+
+struct ButtonsView: View {
+    let image: UIImage?
+    let removeButtonAction: () -> ()
+    let uploadPhotoAction: () -> ()
+    
+    var body: some View {
+        VStack {
+            Button(action: removeButtonAction) {
+                Text("Remove Background")
+                    .actionButtonModifier(backgroundColor: image == nil ? Color.gray : Color.black)
+            }
+            .disabled(image == nil)
+            
+            Button(action: uploadPhotoAction) {
+                Text("Upload a Photo")
+                    .actionButtonModifier(backgroundColor: Color.black)
+            }
+        }
+        .padding(.bottom, 30)
+    }
 }
