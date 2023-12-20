@@ -14,15 +14,17 @@ import CoreImage.CIFilterBuiltins
 @Observable final class RemoveBackgroundViewModel {
     var image: UIImage? { 
         didSet {
-            output = nil
+            self.output = nil
+            guard let image else { return }
+            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .original, subjectPosition: subjectPosition)
         }
     }
     var source: ImageSourceType?
     var presentSelection: Bool = false
     var output: UIImage?
     
-    //TODO Integrate Later!
-    @ObservationIgnored
+    var effect: Effect = .bokeh
+    var background: Background = .transparent
     var subjectPosition: CGPoint?
     
     @ObservationIgnored
@@ -30,10 +32,10 @@ import CoreImage.CIFilterBuiltins
     
     func removeBackground() {
         guard let image else { return }
-        self.regenerate(usingInputImage: CIImage(image: image)!, subjectPosition: subjectPosition)
+        self.regenerate(usingInputImage: CIImage(image: image)!, effect: effect, background: background, subjectPosition: subjectPosition)
     }
     
-    private func regenerate(usingInputImage inputImage: CIImage, subjectPosition: CGPoint?) {
+    private func regenerate(usingInputImage inputImage: CIImage, effect: Effect, background: Background, subjectPosition: CGPoint?) {
         processingQueue.async {
             // Generate the input-image mask.
             guard let mask = self.subjectMask(fromImage: inputImage, atPoint: subjectPosition) else {
@@ -41,11 +43,12 @@ import CoreImage.CIFilterBuiltins
             }
             
             // Acquire the selected background image.
-            let backgroundImage = CIImage(color: CIColor.clear)
+            let backgroundImage = self.image(forBackground: background, inputImage: inputImage)
                 .cropped(to: inputImage.extent)
             
             // Apply the visual effect and composite.
-            let composited = self.apply(toInputImage: inputImage, background: backgroundImage, mask: mask)
+            // Apply the visual effect and composite.
+            let composited = self.apply(effect: effect, toInputImage: inputImage, background: backgroundImage, mask: mask)
             let output = UIImage(cgImage: self.render(ciImage: composited))
             
             DispatchQueue.main.async {
@@ -92,10 +95,48 @@ import CoreImage.CIFilterBuiltins
     }
     
     /// Applies the current effect and returns the composited image.
-    private func apply(toInputImage inputImage: CIImage, background: CIImage, mask: CIImage) -> CIImage {
+    private func apply(
+        effect: Effect,
+        toInputImage inputImage: CIImage,
+        background: CIImage,
+        mask: CIImage
+    ) -> CIImage {
+
+        var postEffectBackground = background
+
+        switch effect {
+        case .none:
+            break
+
+        case .highlight:
+            let filter = CIFilter.exposureAdjust()
+            filter.inputImage = background
+            filter.ev = -3
+            postEffectBackground = filter.outputImage!
+
+        case .bokeh:
+            let filter = CIFilter.bokehBlur()
+            filter.inputImage = apply(
+                effect: .none,
+                toInputImage: CIImage(color: .red)
+                    .cropped(to: inputImage.extent),
+                background: background,
+                mask: mask)
+            filter.ringSize = 1
+            filter.ringAmount = 1
+            filter.softness = 1.0
+            filter.radius = 20
+            postEffectBackground = filter.outputImage!
+
+        case .noir:
+            let filter = CIFilter.photoEffectNoir()
+            filter.inputImage = background
+            postEffectBackground = filter.outputImage!
+        }
+
         let filter = CIFilter.blendWithMask()
         filter.inputImage = inputImage
-        filter.backgroundImage = background
+        filter.backgroundImage = postEffectBackground
         filter.maskImage = mask
         return filter.outputImage!
     }
@@ -139,6 +180,18 @@ import CoreImage.CIFilterBuiltins
         // Otherwise, restrict this to just the selected instance.
         return instanceLabel == 0 ? observation.allInstances : [Int(instanceLabel)]
     }
+    
+    /// Returns the image for the given background preset.
+    private func image(forBackground background: Background, inputImage: CIImage) -> CIImage {
+        switch background {
+        case .original:
+            return inputImage
+        case .transparent:
+            return CIImage(color: CIColor.clear)
+        case .greenScreen:
+            return CIImage(color: CIColor.green)
+        }
+    }
 }
 
 enum ImageSourceType: Identifiable {
@@ -148,4 +201,17 @@ enum ImageSourceType: Identifiable {
     }
     case gallery
     case camera
+}
+
+enum Effect: String, Equatable, CaseIterable {
+    case none = "None"
+    case highlight = "Highlight"
+    case bokeh = "Bokeh Halo"
+    case noir = "Noir"
+}
+
+enum Background: String, Equatable, CaseIterable {
+    case original = "Original"
+    case transparent = "Transparent"
+    case greenScreen = "Green Screen"
 }
