@@ -14,7 +14,7 @@ struct RemoveBackgroundView: View {
     var body: some View {
         VStack(spacing: 30) {
             
-            ImagesView(output: viewModel.output, image: viewModel.image)
+            ImagesView(output: viewModel.output, image: viewModel.image, position: $viewModel.subjectPosition)
             
             Spacer()
             

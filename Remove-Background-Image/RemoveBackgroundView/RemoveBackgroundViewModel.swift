@@ -16,7 +16,7 @@ import CoreImage.CIFilterBuiltins
         didSet {
             self.output = nil
             guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .original, subjectPosition: subjectPosition)
+            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .transparent, subjectPosition: subjectPosition)
         }
     }
     var source: ImageSourceType?
@@ -25,7 +25,12 @@ import CoreImage.CIFilterBuiltins
     
     var effect: Effect = .bokeh
     var background: Background = .transparent
-    var subjectPosition: CGPoint?
+    var subjectPosition: CGPoint? {
+        didSet {
+            guard let image else { return }
+            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .original, subjectPosition: subjectPosition)
+        }
+    }
     
     @ObservationIgnored
     private var processingQueue = DispatchQueue(label: "EffectsProcessing")
