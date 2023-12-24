@@ -34,6 +34,7 @@
 		E93531692B38C40000A57987 /* Urbanist-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93531572B38C40000A57987 /* Urbanist-MediumItalic.ttf */; };
 		E935316A2B38C40000A57987 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93531582B38C40000A57987 /* Urbanist-Medium.ttf */; };
 		E935316E2B38C58800A57987 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935316D2B38C58800A57987 /* FontFactory.swift */; };
+		E93531702B38C78400A57987 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E935316F2B38C78400A57987 /* Colors.xcassets */; };
 		E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979322B2CE771007A13E0 /* Modifier+Text.swift */; };
 		E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979342B2CE887007A13E0 /* Modifier+Image.swift */; };
 		E984BEAA2B322F6B0008326A /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984BEA92B322F6B0008326A /* AddImageView.swift */; };
@@ -71,6 +72,7 @@
 		E93531582B38C40000A57987 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
 		E935316C2B38C4C800A57987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E935316D2B38C58800A57987 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
+		E935316F2B38C78400A57987 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E93979322B2CE771007A13E0 /* Modifier+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Text.swift"; sourceTree = "<group>"; };
 		E93979342B2CE887007A13E0 /* Modifier+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Image.swift"; sourceTree = "<group>"; };
 		E984BEA92B322F6B0008326A /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
@@ -114,7 +116,6 @@
 				E9C10EAB2B26CC0E008876EB /* Utility */,
 				E93531452B38C3EE00A57987 /* Resource */,
 				E91047BD2B1E6863007439B7 /* Remove_Background_ImageApp.swift */,
-				E91047C12B1E6865007439B7 /* Assets.xcassets */,
 				E91047C32B1E6865007439B7 /* Preview Content */,
 			);
 			path = "Remove-Background-Image";
@@ -159,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				E93531462B38C3F700A57987 /* Font */,
+				E91047C12B1E6865007439B7 /* Assets.xcassets */,
+				E935316F2B38C78400A57987 /* Colors.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				E93531662B38C40000A57987 /* Urbanist-SemiBoldItalic.ttf in Resources */,
 				E935315E2B38C40000A57987 /* Urbanist-ExtraLightItalic.ttf in Resources */,
 				E935315D2B38C40000A57987 /* Urbanist-LightItalic.ttf in Resources */,
+				E93531702B38C78400A57987 /* Colors.xcassets in Resources */,
 				E93531612B38C40000A57987 /* Urbanist-ExtraBold.ttf in Resources */,
 				E935315C2B38C40000A57987 /* Urbanist-Black.ttf in Resources */,
 				E935315F2B38C40000A57987 /* Urbanist-BoldItalic.ttf in Resources */,

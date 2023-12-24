@@ -40,8 +40,6 @@ struct ImagesView: View {
                 AddImageView()
             }
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 50)
     }
 }
 

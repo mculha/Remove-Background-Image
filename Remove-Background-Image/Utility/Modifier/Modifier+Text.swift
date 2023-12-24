@@ -25,11 +25,24 @@ struct ActionButtonModifier: ViewModifier {
     
 }
 
+struct BoldTextModifier: ViewModifier {
+    
+    let size: CGFloat
+    
+    func body(content: Content) -> some View {
+        content.font(FontFactory.font(font: .bold, size: size))
+    }
+    
+}
 
 extension Text {
     
     func actionButtonModifier(backgroundColor: Color) -> some View {
         self
             .modifier(ActionButtonModifier(backgroundColor: backgroundColor))
+    }
+    
+    func boldModifier(size: CGFloat) -> some View {
+        self.modifier(BoldTextModifier(size: size))
     }
 }
