@@ -13,8 +13,6 @@ extension Image {
     func defaultImageModifier() -> some View{
         self
             .resizable()
-            .padding(10)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .aspectRatio(contentMode: .fit)
     }

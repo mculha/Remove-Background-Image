@@ -30,6 +30,7 @@ struct RemoveBackgroundView: View {
                 
             }
             .padding(.horizontal, 24)
+            .padding(.vertical, 10)
             .sheet(isPresented: $viewModel.presentSelection) {
                 PhotoPickerSelectionView(imageSource: $viewModel.source, present: $viewModel.presentSelection)
                     .presentationDetents([.height(90)])

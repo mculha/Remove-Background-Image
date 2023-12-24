@@ -10,24 +10,16 @@ import SwiftUI
 struct ImagesView: View {
     let output: UIImage?
     let image: UIImage?
-    
-    @State private var outputViewSize = CGSize.zero
     @Binding var position: CGPoint?
     
     var body: some View {
         VStack {
             if let output {
                 GeometryReader { geometry in
-                    
                     Image(uiImage: output)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .background(Color.blue)
-                        .onAppear {
-                            outputViewSize = geometry.size
-                        }
+                        .defaultImageModifier()
+                        .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
                         .onTapGesture { location in
-                            // Normalize the tap position.
                             position = CGPoint(
                                 x: location.x / geometry.size.width,
                                 y: location.y / geometry.size.height)
@@ -40,7 +32,7 @@ struct ImagesView: View {
                 AddImageView()
             }
         }
-        .frame(maxHeight: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .overlay {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(LinearGradient(colors: [Color(.borderGradientStart), Color(.borderGradientEnd)], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 3)

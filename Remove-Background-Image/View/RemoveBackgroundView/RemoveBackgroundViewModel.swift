@@ -16,7 +16,7 @@ import CoreImage.CIFilterBuiltins
         didSet {
             self.output = nil
             guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .transparent, subjectPosition: subjectPosition)
+            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .original, subjectPosition: subjectPosition)
         }
     }
     var source: ImageSourceType?
