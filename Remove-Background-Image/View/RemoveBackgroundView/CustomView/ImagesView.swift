@@ -40,6 +40,11 @@ struct ImagesView: View {
                 AddImageView()
             }
         }
+        .frame(maxHeight: .infinity)
+        .overlay {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(LinearGradient(colors: [Color(.borderGradientStart), Color(.borderGradientEnd)], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 3)
+        }
     }
 }
 

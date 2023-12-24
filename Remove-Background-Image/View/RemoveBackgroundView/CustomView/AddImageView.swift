@@ -11,17 +11,17 @@ struct AddImageView: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Color.gray
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-            
-            Image(systemName: "photo.badge.plus")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.white)
-                .padding(70)
+            VStack(spacing: 16) {
+                Image(.addImagePlaceholder)
+                    .resizable()
+                    .frame(width: 28, height: 28)
+                
+                Text("No Image Selected")
+                    .mediumModifier(size: 16)
+                    .foregroundStyle(Color(.addImageText))
+            }
         }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 20)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

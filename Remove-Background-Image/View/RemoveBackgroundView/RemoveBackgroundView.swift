@@ -23,12 +23,13 @@ struct RemoveBackgroundView: View {
                     .foregroundStyle(.white)
                 
                 ImagesView(output: viewModel.output, image: viewModel.image, position: $viewModel.subjectPosition)
+                    .padding(.bottom, 10)
                 
-                Spacer()
                 
-                ButtonsView(image: viewModel.image, removeButtonAction: self.removeBackground, uploadPhotoAction: self.presentBottomSheet)
+                ButtonsView(removeButtonAction: self.removeBackground, uploadPhotoAction: self.presentBottomSheet)
                 
             }
+            .padding(.horizontal, 24)
             .sheet(isPresented: $viewModel.presentSelection) {
                 PhotoPickerSelectionView(imageSource: $viewModel.source, present: $viewModel.presentSelection)
                     .presentationDetents([.height(90)])

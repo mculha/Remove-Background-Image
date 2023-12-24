@@ -8,27 +8,37 @@
 import SwiftUI
 
 struct ButtonsView: View {
-    let image: UIImage?
     let removeButtonAction: () -> ()
     let uploadPhotoAction: () -> ()
     
     var body: some View {
-        VStack {
+        VStack(spacing: 24) {
+            Button(action: uploadPhotoAction) {
+                HStack(spacing: 16) {
+                    Image(.uploadImageCamera)
+                        .frame(width: 20, height: 20)
+                    
+                    Text("Upload a Photo")
+                        .boldModifier(size: 16)
+                        .foregroundStyle(Color.white)
+                }
+                .actionButtonModifier(backgroundColor: Color(.uploadPhotoBG))
+            }
+            
+            Divider()
+                .background(Color(.uploadPhotoBG))
+            
             Button(action: removeButtonAction) {
                 Text("Remove Background")
-                    .actionButtonModifier(backgroundColor: image == nil ? Color.gray : Color.black)
+                    .boldModifier(size: 16)
+                    .foregroundStyle(Color.white)
+                    .actionButtonModifier(backgroundColor: Color(.removeBG))
             }
-            .disabled(image == nil)
             
-            Button(action: uploadPhotoAction) {
-                Text("Upload a Photo")
-                    .actionButtonModifier(backgroundColor: Color.black)
-            }
         }
-        .padding(.bottom, 30)
     }
 }
 
 #Preview {
-    ButtonsView(image: nil, removeButtonAction: {}, uploadPhotoAction: {})
+    ButtonsView(removeButtonAction: {}, uploadPhotoAction: {})
 }

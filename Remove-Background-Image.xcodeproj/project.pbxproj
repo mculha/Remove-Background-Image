@@ -35,6 +35,7 @@
 		E935316A2B38C40000A57987 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93531582B38C40000A57987 /* Urbanist-Medium.ttf */; };
 		E935316E2B38C58800A57987 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935316D2B38C58800A57987 /* FontFactory.swift */; };
 		E93531702B38C78400A57987 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E935316F2B38C78400A57987 /* Colors.xcassets */; };
+		E93531722B38D35A00A57987 /* Modifier+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93531712B38D35A00A57987 /* Modifier+View.swift */; };
 		E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979322B2CE771007A13E0 /* Modifier+Text.swift */; };
 		E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979342B2CE887007A13E0 /* Modifier+Image.swift */; };
 		E984BEAA2B322F6B0008326A /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984BEA92B322F6B0008326A /* AddImageView.swift */; };
@@ -73,6 +74,7 @@
 		E935316C2B38C4C800A57987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E935316D2B38C58800A57987 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
 		E935316F2B38C78400A57987 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E93531712B38D35A00A57987 /* Modifier+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+View.swift"; sourceTree = "<group>"; };
 		E93979322B2CE771007A13E0 /* Modifier+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Text.swift"; sourceTree = "<group>"; };
 		E93979342B2CE887007A13E0 /* Modifier+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Image.swift"; sourceTree = "<group>"; };
 		E984BEA92B322F6B0008326A /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				E93979322B2CE771007A13E0 /* Modifier+Text.swift */,
 				E93979342B2CE887007A13E0 /* Modifier+Image.swift */,
+				E93531712B38D35A00A57987 /* Modifier+View.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				E935316E2B38C58800A57987 /* FontFactory.swift in Sources */,
 				E984BEAE2B322F930008326A /* ButtonsView.swift in Sources */,
 				E984BEAA2B322F6B0008326A /* AddImageView.swift in Sources */,
+				E93531722B38D35A00A57987 /* Modifier+View.swift in Sources */,
 				E984BEAC2B322F7E0008326A /* ImagesView.swift in Sources */,
 				E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */,
 				E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */,
