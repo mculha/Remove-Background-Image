@@ -10,19 +10,12 @@ import SwiftUI
 struct RemoveBackgroundView: View {
     
     @State private var viewModel: RemoveBackgroundViewModel = .init()
-    @State var yOffset: CGFloat = 0
-    
     
     var body: some View {
         ZStack {
             Color(.bg)
                 .ignoresSafeArea()
             
-            Divider()
-                .frame(height: 2)
-                .overlay(Color.white)
-                .padding(.horizontal, 24)
-                .offset(y: yOffset)
             
             VStack(spacing: 32) {
                 
@@ -32,10 +25,13 @@ struct RemoveBackgroundView: View {
                 
                 GeometryReader { geometry in
                     ImagesView(output: viewModel.output, image: viewModel.image, position: $viewModel.subjectPosition)
-                        .onAppear {
-                            self.yOffset = -(geometry.size.height/2) - 25
-                            withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: true)) {
-                                self.yOffset = geometry.size.height/2 - 35
+                        .onChange(of: viewModel.animationState) {
+                            self.viewModel.yOffset = -(geometry.size.height/2) - 25
+                            guard viewModel.animationState == .animating else { return }
+                            withAnimation(.linear(duration: 0.45).repeatCount(2, autoreverses: true)) {
+                                self.viewModel.yOffset = geometry.size.height/2 - 35
+                            } completion: {
+                                self.viewModel.animationState = .finished
                             }
                         }
                         .padding(.bottom, 10)
@@ -60,6 +56,12 @@ struct RemoveBackgroundView: View {
                                     .background(.white)
                 }
             }
+            
+            Divider()
+                .frame(height: viewModel.animationState == .animating ? 3 : 0)
+                .overlay(Color.white)
+                .padding(.horizontal, 24)
+                .offset(y: viewModel.yOffset)
         }
         
     }

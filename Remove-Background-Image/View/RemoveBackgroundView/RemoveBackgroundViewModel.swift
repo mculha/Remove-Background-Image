@@ -16,19 +16,21 @@ import CoreImage.CIFilterBuiltins
         didSet {
             self.output = nil
             guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .original, subjectPosition: subjectPosition)
+            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .original, subjectPosition: subjectPosition)
         }
     }
     var source: ImageSourceType?
     var presentSelection: Bool = false
     var output: UIImage?
     
+    var yOffset: CGFloat = 0
+    var animationState: AnimationState = .ready
     var effect: Effect = .bokeh
     var background: Background = .transparent
     var subjectPosition: CGPoint? {
         didSet {
             guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .bokeh, background: .original, subjectPosition: subjectPosition)
+            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .original, subjectPosition: subjectPosition)
         }
     }
     
@@ -37,6 +39,7 @@ import CoreImage.CIFilterBuiltins
     
     func removeBackground() {
         guard let image else { return }
+        self.animationState = .animating
         self.regenerate(usingInputImage: CIImage(image: image)!, effect: effect, background: background, subjectPosition: subjectPosition)
     }
     
@@ -219,4 +222,10 @@ enum Background: String, Equatable, CaseIterable {
     case original = "Original"
     case transparent = "Transparent"
     case greenScreen = "Green Screen"
+}
+
+enum AnimationState {
+    case ready
+    case animating
+    case finished
 }
