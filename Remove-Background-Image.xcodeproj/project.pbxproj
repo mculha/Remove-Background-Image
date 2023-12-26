@@ -38,6 +38,10 @@
 		E93531722B38D35A00A57987 /* Modifier+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93531712B38D35A00A57987 /* Modifier+View.swift */; };
 		E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979322B2CE771007A13E0 /* Modifier+Text.swift */; };
 		E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93979342B2CE887007A13E0 /* Modifier+Image.swift */; };
+		E946C31F2B3B61DE0040EC35 /* ImageSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946C31E2B3B61DE0040EC35 /* ImageSourceType.swift */; };
+		E946C3212B3B61EE0040EC35 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946C3202B3B61ED0040EC35 /* Effect.swift */; };
+		E946C3232B3B61FD0040EC35 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946C3222B3B61FD0040EC35 /* Background.swift */; };
+		E946C3252B3B62090040EC35 /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946C3242B3B62090040EC35 /* AnimationState.swift */; };
 		E984BEAA2B322F6B0008326A /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984BEA92B322F6B0008326A /* AddImageView.swift */; };
 		E984BEAC2B322F7E0008326A /* ImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984BEAB2B322F7E0008326A /* ImagesView.swift */; };
 		E984BEAE2B322F930008326A /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984BEAD2B322F930008326A /* ButtonsView.swift */; };
@@ -77,6 +81,10 @@
 		E93531712B38D35A00A57987 /* Modifier+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+View.swift"; sourceTree = "<group>"; };
 		E93979322B2CE771007A13E0 /* Modifier+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Text.swift"; sourceTree = "<group>"; };
 		E93979342B2CE887007A13E0 /* Modifier+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Image.swift"; sourceTree = "<group>"; };
+		E946C31E2B3B61DE0040EC35 /* ImageSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourceType.swift; sourceTree = "<group>"; };
+		E946C3202B3B61ED0040EC35 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
+		E946C3222B3B61FD0040EC35 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		E946C3242B3B62090040EC35 /* AnimationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationState.swift; sourceTree = "<group>"; };
 		E984BEA92B322F6B0008326A /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
 		E984BEAB2B322F7E0008326A /* ImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesView.swift; sourceTree = "<group>"; };
 		E984BEAD2B322F930008326A /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
@@ -212,6 +220,17 @@
 			path = Modifier;
 			sourceTree = "<group>";
 		};
+		E946C31D2B3B61CC0040EC35 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				E946C31E2B3B61DE0040EC35 /* ImageSourceType.swift */,
+				E946C3202B3B61ED0040EC35 /* Effect.swift */,
+				E946C3222B3B61FD0040EC35 /* Background.swift */,
+				E946C3242B3B62090040EC35 /* AnimationState.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		E984BEA82B322F570008326A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +251,7 @@
 		E9C10EAB2B26CC0E008876EB /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E946C31D2B3B61CC0040EC35 /* Enum */,
 				E91047D02B2243DF007439B7 /* Representable */,
 				E93979312B2CE755007A13E0 /* Modifier */,
 				E935316D2B38C58800A57987 /* FontFactory.swift */,
@@ -328,19 +348,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E946C3212B3B61EE0040EC35 /* Effect.swift in Sources */,
 				E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */,
 				E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */,
 				E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */,
 				E935316E2B38C58800A57987 /* FontFactory.swift in Sources */,
 				E984BEAE2B322F930008326A /* ButtonsView.swift in Sources */,
 				E984BEAA2B322F6B0008326A /* AddImageView.swift in Sources */,
+				E946C31F2B3B61DE0040EC35 /* ImageSourceType.swift in Sources */,
 				E93531722B38D35A00A57987 /* Modifier+View.swift in Sources */,
 				E984BEAC2B322F7E0008326A /* ImagesView.swift in Sources */,
 				E91047CC2B20F866007439B7 /* ImagePickerGallery.swift in Sources */,
+				E946C3232B3B61FD0040EC35 /* Background.swift in Sources */,
 				E93979352B2CE887007A13E0 /* Modifier+Image.swift in Sources */,
 				E91047C02B1E6863007439B7 /* RemoveBackgroundView.swift in Sources */,
 				E91047D52B24886A007439B7 /* PhotoPickerSelectionView.swift in Sources */,
 				E91047BE2B1E6863007439B7 /* Remove_Background_ImageApp.swift in Sources */,
+				E946C3252B3B62090040EC35 /* AnimationState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

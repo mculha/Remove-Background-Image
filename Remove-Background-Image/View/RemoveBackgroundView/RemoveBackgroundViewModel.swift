@@ -202,30 +202,3 @@ import CoreImage.CIFilterBuiltins
     }
 }
 
-enum ImageSourceType: Identifiable {
-    
-    var id: Self {
-        return self
-    }
-    case gallery
-    case camera
-}
-
-enum Effect: String, Equatable, CaseIterable {
-    case none = "None"
-    case highlight = "Highlight"
-    case bokeh = "Bokeh Halo"
-    case noir = "Noir"
-}
-
-enum Background: String, Equatable, CaseIterable {
-    case original = "Original"
-    case transparent = "Transparent"
-    case greenScreen = "Green Screen"
-}
-
-enum AnimationState {
-    case ready
-    case animating
-    case finished
-}
