@@ -10,11 +10,19 @@ import SwiftUI
 struct RemoveBackgroundView: View {
     
     @State private var viewModel: RemoveBackgroundViewModel = .init()
+    @State var yOffset: CGFloat = 0
+    
     
     var body: some View {
         ZStack {
             Color(.bg)
                 .ignoresSafeArea()
+            
+            Divider()
+                .frame(height: 2)
+                .overlay(Color.white)
+                .padding(.horizontal, 24)
+                .offset(y: yOffset)
             
             VStack(spacing: 32) {
                 
@@ -22,9 +30,16 @@ struct RemoveBackgroundView: View {
                     .boldModifier(size: 32)
                     .foregroundStyle(.white)
                 
-                ImagesView(output: viewModel.output, image: viewModel.image, position: $viewModel.subjectPosition)
-                    .padding(.bottom, 10)
-                
+                GeometryReader { geometry in
+                    ImagesView(output: viewModel.output, image: viewModel.image, position: $viewModel.subjectPosition)
+                        .onAppear {
+                            self.yOffset = -(geometry.size.height/2) - 25
+                            withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: true)) {
+                                self.yOffset = geometry.size.height/2 - 35
+                            }
+                        }
+                        .padding(.bottom, 10)
+                }
                 
                 ButtonsView(removeButtonAction: self.removeBackground, uploadPhotoAction: self.presentBottomSheet)
                 
@@ -46,6 +61,7 @@ struct RemoveBackgroundView: View {
                 }
             }
         }
+        
     }
     
     func presentBottomSheet() {
