@@ -10,3 +10,5 @@ According to the documentation, objects are also selectable to determine which o
 
 Vision is an amazing framework. Besides removing the background the framework can detect rectangles and texts in images, Analyzing Image Similarity with Feature Print, and also remove the background of live videos.
 More information can be found [**here**](https://developer.apple.com/documentation/vision).
+
+**NOTE:** The project needs to run on a real device. It does not work on simulators. Please run the project on a real device to see how it works.
