@@ -15,6 +15,7 @@
 		E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */; };
 		E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D12B22455E007439B7 /* ImagePickerCamera.swift */; };
 		E91047D52B24886A007439B7 /* PhotoPickerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */; };
+		E91CBC612B4DEA09009C3D28 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CBC602B4DEA09009C3D28 /* UIImage+Extension.swift */; };
 		E93531592B38C40000A57987 /* Urbanist-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93531472B38C3FF00A57987 /* Urbanist-BlackItalic.ttf */; };
 		E935315A2B38C40000A57987 /* Urbanist-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93531482B38C3FF00A57987 /* Urbanist-Italic.ttf */; };
 		E935315B2B38C40000A57987 /* Urbanist-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93531492B38C3FF00A57987 /* Urbanist-ThinItalic.ttf */; };
@@ -57,6 +58,7 @@
 		E91047CE2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundViewModel.swift; sourceTree = "<group>"; };
 		E91047D12B22455E007439B7 /* ImagePickerCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCamera.swift; sourceTree = "<group>"; };
 		E91047D42B24886A007439B7 /* PhotoPickerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerSelectionView.swift; sourceTree = "<group>"; };
+		E91CBC602B4DEA09009C3D28 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E93531472B38C3FF00A57987 /* Urbanist-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-BlackItalic.ttf"; sourceTree = "<group>"; };
 		E93531482B38C3FF00A57987 /* Urbanist-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic.ttf"; sourceTree = "<group>"; };
 		E93531492B38C3FF00A57987 /* Urbanist-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ThinItalic.ttf"; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			path = PhotoSelection;
 			sourceTree = "<group>";
 		};
+		E91CBC5F2B4DE9FA009C3D28 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E91CBC602B4DEA09009C3D28 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E93531452B38C3EE00A57987 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +261,7 @@
 		E9C10EAB2B26CC0E008876EB /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E91CBC5F2B4DE9FA009C3D28 /* Extension */,
 				E946C31D2B3B61CC0040EC35 /* Enum */,
 				E91047D02B2243DF007439B7 /* Representable */,
 				E93979312B2CE755007A13E0 /* Modifier */,
@@ -351,6 +362,7 @@
 				E946C3212B3B61EE0040EC35 /* Effect.swift in Sources */,
 				E91047CF2B20F9CC007439B7 /* RemoveBackgroundViewModel.swift in Sources */,
 				E91047D22B22455E007439B7 /* ImagePickerCamera.swift in Sources */,
+				E91CBC612B4DEA09009C3D28 /* UIImage+Extension.swift in Sources */,
 				E93979332B2CE771007A13E0 /* Modifier+Text.swift in Sources */,
 				E935316E2B38C58800A57987 /* FontFactory.swift in Sources */,
 				E984BEAE2B322F930008326A /* ButtonsView.swift in Sources */,
@@ -507,8 +519,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,8 +551,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

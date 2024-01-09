@@ -16,7 +16,7 @@ import CoreImage.CIFilterBuiltins
         didSet {
             self.output = nil
             guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .original, subjectPosition: subjectPosition)
+            self.regenerate(usingInputImage: CIImage(image: image.fixOrientation())!, effect: .none, background: .original, subjectPosition: subjectPosition)
         }
     }
     var source: ImageSourceType?
@@ -30,7 +30,7 @@ import CoreImage.CIFilterBuiltins
     var subjectPosition: CGPoint? {
         didSet {
             guard let image else { return }
-            self.regenerate(usingInputImage: CIImage(image: image)!, effect: .none, background: .original, subjectPosition: subjectPosition)
+            self.regenerate(usingInputImage: CIImage(image: image.fixOrientation())!, effect: .none, background: .original, subjectPosition: subjectPosition)
         }
     }
     
@@ -40,7 +40,7 @@ import CoreImage.CIFilterBuiltins
     func removeBackground() {
         guard let image else { return }
         self.animationState = .animating
-        self.regenerate(usingInputImage: CIImage(image: image)!, effect: effect, background: background, subjectPosition: subjectPosition)
+        self.regenerate(usingInputImage: CIImage(image: image.fixOrientation())!, effect: effect, background: background, subjectPosition: subjectPosition)
     }
     
     private func regenerate(usingInputImage inputImage: CIImage, effect: Effect, background: Background, subjectPosition: CGPoint?) {
@@ -126,7 +126,7 @@ import CoreImage.CIFilterBuiltins
             let filter = CIFilter.bokehBlur()
             filter.inputImage = apply(
                 effect: .none,
-                toInputImage: CIImage(color: .red)
+                toInputImage: CIImage(color: .white)
                     .cropped(to: inputImage.extent),
                 background: background,
                 mask: mask)
@@ -201,4 +201,3 @@ import CoreImage.CIFilterBuiltins
         }
     }
 }
-
