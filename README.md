@@ -12,3 +12,8 @@ Vision is an amazing framework. Besides removing the background the framework ca
 More information can be found [**here**](https://developer.apple.com/documentation/vision).
 
 **NOTE:** The project needs to run on a real device. It does not work on simulators. Please run the project on a real device to see how it works.
+
+
+
+https://github.com/mculha/Remove-Background-Image/assets/20414142/0ba19229-afca-4d7c-812e-7fbfdd95b3ff
+
